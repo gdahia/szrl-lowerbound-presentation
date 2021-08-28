@@ -1,0 +1,121 @@
+\documentclass{beamer}
+
+\usetheme{Rochester}
+
+\DeclareMathOperator{\Hy}{\mathcal{H}}
+\newcommand{\V}[1]{{V \choose #1}}
+
+\title{EKR for random hypergraphs}
+
+\subtitle{Based on ``On Erd\H{o}s-Ko-Rado for random hypergraphs I'', Arran Hamm, Jeff
+  Kahn, 2018}
+
+\author{Gabriel Dahia}
+
+\institute{IMPA}
+
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  %
+  \titlepage
+  %
+\end{frame}
+
+\begin{frame}{A brief recap of EKR}
+  %
+  \begin{definition}[$k$-uniform hypergraph]<1->
+    %
+    $\Hy \subseteq \V{k}$, $|V| = n > 2k$.
+    %
+  \end{definition}
+
+  \begin{definition}[Clique / intersecting family]<2->
+    %
+    $A \cap B \neq \emptyset$ for $A, B \in \Hy$.
+    %
+  \end{definition}
+
+  \begin{definition}[Star]<3->
+    %
+    $\Hy_x = \{A \in \Hy \mid x \in A\}$
+    %
+  \end{definition}
+
+  \begin{theorem}[Erd\H{o}s, Ko, Rado; 1961]<4->
+    %
+    For $\Hy$ clique:
+    %
+    \begin{enumerate}
+      %
+      \item $|\Hy| \le {n - 1 \choose k - 1}$.
+            %
+      \item<5-> $|\Hy| = {n - 1 \choose k - 1}$ iff $\Hy =
+              \V{k}_x$ for some $x \in V$.
+            %
+    \end{enumerate}
+    %
+  \end{theorem}
+
+\end{frame}
+
+\begin{frame}{Erd\H{o}s-Ko-Rado property}
+
+  \begin{definition}<1->
+    %
+    $\Hy$ \emph{is EKR} if every largest clique of $\Hy$ is a star.
+    %
+  \end{definition}
+
+  \begin{theorem}[Erd\H{o}s, Ko, Rado; 1961]<2->
+    %
+    \begin{enumerate}
+      %
+      \setcounter{enumi}{1}
+      %
+      \item $\V{k}$ is EKR.
+            %
+    \end{enumerate}
+    %
+  \end{theorem}
+
+\end{frame}
+
+\begin{frame}{EKR for random $\Hy$}
+  %
+  \begin{definition}[$\Hy_k(n, p)$]
+    %
+    Random $\Hy$, elements of $\V{k}$ independently with probability $p$.
+    %
+    % repeated elements?
+    %
+  \end{definition}
+  %
+  % this is our G(n, p)
+  %
+  \begin{block}{Question}<2->
+    %
+    ``For what $p_0 = p_0(n,k)$ is it true that $\Hy_k(n, p)$ satisfies EKR almost surely
+    provided $p > p_0$?''
+    %
+    % similar to questions of ex(n, H) generalize to ex(G(n, p), H). ie V choose k is K_n
+    %
+  \end{block}
+  %
+\end{frame}
+
+% observe not increasing by edge addition
+
+% motivate monotonicity for the range we're considering, p = 1 is EKR
+
+% observe not increasing in p for the entire range
+
+% why "For instance, for sufficiently tinyp(depending onnandk) it will usually be the
+% case thateveryclique is contained in a star."?
+
+% also require p_0 to ensure probability at least a half, ie restrict the threshold to
+% the monotone region
+
+\end{document}
