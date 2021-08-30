@@ -3,6 +3,7 @@
 \usetheme{Rochester}
 
 \DeclareMathOperator{\Hy}{\mathcal{H}}
+\DeclareMathOperator{\Prob}{\mathbb{P}}
 \newcommand{\V}[1]{{V \choose #1}}
 
 \title{EKR for random hypergraphs}
@@ -95,7 +96,7 @@
   %
   % this is our G(n, p)
   %
-  \begin{block}{Question}<2->
+  \begin{block}{Question (Balogh, Bohman, Mubayi; 2009)}<2->
     %
     ``For what $p_0 = p_0(n,k)$ is it true that $\Hy_k(n, p)$ satisfies EKR almost surely
     provided $p > p_0$?''
@@ -104,19 +105,36 @@
     %
   \end{block}
   %
+  \begin{block}{Remark}<3->
+    %
+    EKR not increasing by edge addition, nor by increasing $p$.
+    %
+  \end{block}
+  %
 \end{frame}
 
-% observe not increasing by edge addition
-
-% motivate monotonicity for the range we're considering, p = 1 is EKR
-
-% observe not increasing in p for the entire range
-
-% why "For instance, for sufficiently tinyp(depending onnandk) it will usually be the
-% case thateveryclique is contained in a star."?
-
-% also require p_0 to ensure probability at least a half, ie restrict the threshold to
-% the monotone region
+\begin{frame}{What was known before HM2018}
+  %
+  \begin{definition}[Expected degree of a vertex]
+    %
+    $\varphi = p {n - 1 \choose k - 1}$
+    %
+  \end{definition}
+  %
+  \begin{theorem}[Balogh, Bohman, Mubayi; 2009]
+    %
+    \begin{enumerate}
+      %
+      \item If $k \ll n^{1/4}$, then $\Hy \vDash \textrm{EKR}$.
+            %
+      \item If $n^{1/4} \ll k \ll n^{1/3}$ and $\varphi \ll k^{-1}$ or $n^{-1/4} \ll
+              \varphi$, then $\Hy \vDash \textrm{EKR}$.
+            %
+    \end{enumerate}
+    %
+  \end{theorem}
+  %
+\end{frame}
 
 % \Lambda(t) equals the expected number of generic t-cliques: the first {m \choose t} is
 % the number of choices of a t-subset, and q^{t \choose 2} is the probability of it being
