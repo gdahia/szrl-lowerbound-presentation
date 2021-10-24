@@ -2,18 +2,15 @@
 
 \usetheme{Rochester}
 
-\DeclareMathOperator{\Hy}{\mathcal{H}}
 \DeclareMathOperator{\Prob}{\mathbb{P}}
-\DeclareMathOperator{\E}{\mathbb{E}}
-\DeclareMathOperator{\m}{\mathbf{m}}
-\DeclareMathOperator{\q}{\mathbf{q}}
-\DeclareMathOperator{\eps}{\varepsilon}
+\DeclareMathOperator{\twr}{\mathrm{tower}}
 \newcommand{\V}[1]{{V \choose #1}}
+\newcommand{\Z}{\mathcal{Z}}
+\newcommand{\eps}{\varepsilon}
 
 \title{Lower bounds for Szemer\'{e}di's Regularity Lemma}
 
-\subtitle{Based on work by Gowers, Moshkovitz and Shapira, and, Fox and LM Lov\'{a}sz}
-
+\subtitle{By Gowers (1997), Moshkovitz and Shapira (2016)}
 
 \author{Gabriel Dahia}
 
@@ -35,17 +32,119 @@
   %
   \begin{itemize}
     %
-    \item Gowers, W.T. ``\textit{Lower bounds of tower type for Szemerédi’s uniformity
-            lemma}.'' Geometric \& Functional Analysis (1997).
+    \item Gowers, W.T. ``\textit{Lower bounds of tower type for Szemer\'{e}di's
+          uniformity lemma}.'' Geometric \& Functional Analysis (1997).
           %
     \item Moshkovitz, G. and Shapira, A. ``\textit{A short proof of Gowers’ lower bound
             for the regularity lemma}.'' Combinatorica (2016).
           %
-    \item Fox, J., Lov\'{a}sz, L.M. ``\textit{A tight lower bound for
-          Szemer\'{e}di’s regularity lemma}.'' Combinatorica (2017).
+          %\item Fox, J., Lov\'{a}sz, L.M. ``\textit{A tight lower bound for
+          %Szemer\'{e}di’s regularity lemma}.'' Combinatorica (2017).
           %
   \end{itemize}
   %
 \end{frame}
+
+\begin{frame}{Definitions}
+  %
+  \begin{definition}[$\eps$-regular pair $(A, B)$]
+    %
+    $|d(A, B) - d(A', B')| \le \eps$ for all $A' \subseteq A$ and $B' \subseteq B$ if
+    $|A'| \ge \eps |A|$ and $|B'| \ge \eps |B|$.
+    %
+  \end{definition}
+
+  \pause
+  %
+  \begin{definition}[Equipartition $\Z$]
+    %
+    $\Z = \{Z_1, \dots, Z_k\}$ partition such that $|Z_i - Z_j| \le 1$ for all $i, j \in
+      [k]$.
+    %
+  \end{definition}
+
+  \pause
+  %
+  \begin{definition}[$\eps$-regular equipartition $\Z$]
+    %
+    All but $\eps k^2$ pairs $(Z_i, Z_j)$ are $\eps$-regular.
+    %
+  \end{definition}
+  %
+\end{frame}
+
+\begin{frame}{Szemer\'{e}di's Regularity Lemma}
+  %
+  \begin{theorem}[Szemer\'{e}di (1978)]
+    %
+    For every $\eps$, there is $M = M(\eps)$ so that every graph has an $\eps$-regular
+    equipartition with at most $M$ parts.
+    %
+    \pause
+    %
+    Moreover, $M(\eps) \le \twr(O(\eps^{-1/5}))$.
+    %
+  \end{theorem}
+  %
+\end{frame}
+
+\begin{frame}{Lowerbounds for $M(\eps)$}
+  %
+  \begin{block}{Question}
+    %
+    For which functions $f(\eps)$ do we have a graph such that $f(\eps) \le M(\eps)$?
+    %
+  \end{block}
+  %
+  % TODO: motivate this question: better bounds for applications of regularity, Gowers'
+  % remark that it would be more useful if it were of the form exp(eps^-beta).
+
+  %
+  \pause
+  %
+  \begin{theorem}[Gowers (1997)]
+    %
+    There exists a graph and a constant $c > 0$ such that $\twr(\eps^{-c}) \le M(\eps)$.
+    %
+  \end{theorem}
+  %
+  % TODO: note that gowers prove his lowerbound for a weaker version of the szrl, so the
+  % proof is more general. note however that the ideas are the same
+  %
+\end{frame}
+
+\begin{frame}{Alternative equivalent setting}
+  %
+  \begin{definition}[$\eps$-nice equipartition]
+    %
+    For all $Z \in \Z$, all but $k \eps$ sets $Z' \in \Z$ are such that $(Z, Z')$ is
+    $\eps$-regular.
+    %
+  \end{definition}
+
+  \pause
+
+  \begin{block}{Claim}
+    %
+    Let $M'(\eps)$ be so that every graph has a $\eps$-nice equipartition. Then,
+    $M'(\eps) \le M(\eps^3)$.
+    %
+  \end{block}
+
+  \pause
+
+  \begin{proof}
+    %
+    TODO
+    %
+  \end{proof}
+  %
+\end{frame}
+
+% TODO: define the weighted graph as a distribution over graphs by specifying
+% probabilities for the edges
+
+% TODO: add fox and lovasz overview of the proof technique, including how the weights are
+% determined. try to use that to motivate the definitions.
 
 \end{document}
