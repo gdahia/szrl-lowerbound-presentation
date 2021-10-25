@@ -157,6 +157,26 @@
 % TODO: add fox and lovasz overview of the proof technique, including how the weights are
 % determined. try to use that to motivate the definitions.
 
+\begin{frame}{Gowers lowerbound framework}
+  %
+  Use edge distribution instead of explicit graph.
+  %
+  \pause
+  %
+  Define a sequence of equipartitions $\Z_0, \dots, \Z_s$ with $\Z_{i + 1}$ refining
+  $\Z_i$ in exponentially more parts.
+  %
+  \pause
+  %
+  Probability of edge $uv \in G$ depends on each parts both $u$ and $v$ lie in.
+  %
+  \pause
+  %
+  Any $\eps$-regular partition of the edge distribution cannot be too far from being a
+  refinement of $\Z_s$, which has many parts.
+  %
+\end{frame}
+
 \begin{frame}{Alternative, equivalent setting}
   %
   \begin{definition}[Pair density for edge distributions]
@@ -196,7 +216,11 @@
     %
     Taking a union bound over the choices of $A$ and $B$, the probability of $G$
     failing the lemma is $\Prob(G \text{ bad}) \le 2 {n \choose m}^2 \exp(-2 m^2
-      \theta^2)$, which is less than 1/2 if $m \ge 20 \theta^{-2} \log n$.
+      \theta^2)$,
+    %
+    \pause
+    %
+    which is less than 1/2 if $m \ge 20 \theta^{-2} \log n$.
     %
   \end{proof}
   %
