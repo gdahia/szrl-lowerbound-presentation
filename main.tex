@@ -2,10 +2,13 @@
 
 \usetheme{Rochester}
 
-\usepackage{amsthm,amsmath,amssymb,bbm}
+\usepackage{amsthm,amsmath,amssymb,bbm,multicol}
 
 \DeclareMathOperator{\twr}{\mathrm{tower}}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
 \newcommand{\indicator}[1]{\1_{[#1]}}
 \newcommand{\Exp}[1]{\mathbb{E}\left [#1 \right ]}
 \newcommand{\Prob}{\mathbb{P}}
@@ -82,22 +85,22 @@
   %
   \begin{theorem}[Szemer\'{e}di (1978)]
     %
-    For every $0 < \eps < 1/2$, there is $M = M(\eps)$ so that every graph has an
-    $\eps$-regular equipartition with at most $M$ parts.
+    For every $0 < \eps < 1/2$, there is $K = K(\eps)$ so that every graph has an
+    $\eps$-regular equipartition with at most $K$ parts.
     %
     \pause
     %
-    Moreover, $M(\eps) \le \twr(O(\eps^{-1/5}))$.
+    Moreover, $K(\eps) \le \twr(O(\eps^{-1/5}))$.
     %
   \end{theorem}
   %
 \end{frame}
 
-\begin{frame}{Lowerbounds for $M(\eps)$}
+\begin{frame}{Lowerbounds for $K(\eps)$}
   %
   \begin{block}{Question}
     %
-    For which functions $f(\eps)$ do we have a graph such that $f(\eps) \le M(\eps)$?
+    For which functions $f(\eps)$ do we have a graph such that $f(\eps) \le K(\eps)$?
     %
   \end{block}
   %
@@ -109,7 +112,7 @@
   %
   \begin{theorem}[Gowers (1997)]
     %
-    There exists a graph and a constant $c > 0$ such that $\twr(\eps^{-c}) \le M(\eps)$.
+    There exists a graph and a constant $c > 0$ such that $\twr(\eps^{-c}) \le K(\eps)$.
     %
   \end{theorem}
 
@@ -118,7 +121,7 @@
   \begin{corollary}[Gowers (1997)]
     %
     There exists a graph and a constant $c > 0$ such that $\twr(-c\log \eps) \le
-      M(\eps)$.
+      K(\eps)$.
     %
   \end{corollary}
   %
@@ -140,8 +143,8 @@
 
 %\begin{block}{Claim}
 %%
-%Let $M'(\eps)$ be so that every graph has a $\eps$-nice equipartition. Then,
-%$M'(\eps) \le M(\eps^3)^2$.
+%Let $K'(\eps)$ be so that every graph has a $\eps$-nice equipartition. Then,
+%$K'(\eps) \le K(\eps^3)^2$.
 %%
 %\end{block}
 
@@ -241,7 +244,7 @@
   \begin{lemma}
     %
     For every $m \ge 1$ and $M \lesssim 2^{c^2 m}$, there exists a sequence of
-    $c$-balanced bipartitions of $[M]$.
+    $c$-balanced bipartitions of $[M]$. Call $\phi(m)$ the largest such $M$.
     %
   \end{lemma}
 
@@ -251,8 +254,7 @@
     %
     \pause
     %
-    For bipartition $i$, and element $t \in [M]$, put $t \in A_i$ with probability 1/2
-    and in $B_i$ otherwise.
+    For bipartition $i$, and element $t \in [M]$, put $t \in A_i$ with probability 1/2.
     %
     \pause
     %
@@ -261,14 +263,77 @@
     %
     \pause
     %
-    $\Exp{X_{s, t}} = m/2$. Using Chernoff's bound, $\Prob(X_{s, t} > (1 + c)m/2) \le
-      \exp(-c^2 m/4)$.
+    $\Exp{X_{s, t}} = m/2$.
     %
     \pause
     %
-    Take a union bound over all ${M \choose 2}$ choices of distinct $s, t$.
+    Using Chernoff's bound, $\Prob(X_{s, t} > (1 + c)m/2) \le \exp(-c^2 m/4)$.
+    %
+    \pause
+    %
+    Taking a union bound over all ${M \choose 2}$ choices of distinct $s, t$ works for
+    the given $M$ range.
     %
   \end{proof}
+  %
+\end{frame}
+
+\begin{frame}{The (edge distribution) construction}
+  %
+  \begin{enumerate}
+    %
+    \pause
+    %
+    \item Let $\X_0, \dots, \X_s$ be equipartitions with $|\X_0| = 1$ such that
+          %
+          \begin{multicols}{2}
+            %
+            \begin{equation}
+              %
+              X_{r + 1} = \bigsqcup_{i = 1}^m X_i
+              %
+            \end{equation}
+
+            \begin{equation}
+              %
+              X_i = \bigsqcup_{j = 1}^M X_{i, j}
+              %
+            \end{equation}
+            %
+          \end{multicols}
+          %
+          for $M = \phi(|\X_r|)$.
+
+          \pause
+
+    \item Get $c$-balanced bipartitions $(\A_j, \B_j)_{j = 1}^m$ of $X_{i, 1}, \dots, X_{i, M}$.
+
+          \pause
+
+    \item Create a sequence of $m$ bipartitions of $X_i$ by letting $A_{i, j} =
+            \bigcup_{t \in \A_j} X_{i, t}$ and $B_{i, j} = X_i \setminus A_{i, j}$.
+
+          \pause
+
+    \item Define a graph $G_{r + 1}$ where $uv \in G_{r + 1}$ if for $u \in X_i$ and
+          $v \in X_j$ either $u \in A_{i, j}$ and $v \in A_{j, i}$ or $u \in B_{i, j}$
+          and $v \in B_{j, i}$.
+          %
+  \end{enumerate}
+
+  \pause
+
+  \begin{definition}[Edge distribution $\mu$]
+    %
+    $\Prob_\mu(uv \in G) = \sum_{r = 1}^s 2^{-r} \indicator{uv \in G_r}$.
+    %
+  \end{definition}
+  %
+\end{frame}
+
+\begin{frame}{Example}
+  %
+
   %
 \end{frame}
 
