@@ -2,8 +2,13 @@
 
 \usetheme{Rochester}
 
-\DeclareMathOperator{\Prob}{\mathbb{P}}
+\usepackage{amsthm,amsmath,amssymb,bbm}
+
 \DeclareMathOperator{\twr}{\mathrm{tower}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\indicator}[1]{\1_{[#1]}}
+\newcommand{\Exp}[1]{\mathbb{E}\left [#1 \right ]}
+\newcommand{\Prob}{\mathbb{P}}
 \newcommand{\V}[1]{{V \choose #1}}
 \newcommand{\Z}{\mathcal{Z}}
 \newcommand{\eps}{\varepsilon}
@@ -107,44 +112,94 @@
     There exists a graph and a constant $c > 0$ such that $\twr(\eps^{-c}) \le M(\eps)$.
     %
   \end{theorem}
+
+  \pause
+
+  \begin{corollary}[Gowers (1997)]
+    %
+    There exists a graph and a constant $c > 0$ such that $\twr(-c\log \eps) \le
+      M(\eps)$.
+    %
+  \end{corollary}
   %
   % TODO: note that gowers prove his lowerbound for a weaker version of the szrl, so the
   % proof is more general. note however that the ideas are the same
   %
 \end{frame}
 
-\begin{frame}{Alternative equivalent setting}
+%\begin{frame}{Alternative equivalent setting}
+%%
+%\begin{definition}[$\eps$-nice equipartition]
+%%
+%For all $Z \in \Z$, all but $k \eps$ sets $Z' \in \Z$ are such that $(Z, Z')$ is
+%$\eps$-regular.
+%%
+%\end{definition}
+
+%\pause
+
+%\begin{block}{Claim}
+%%
+%Let $M'(\eps)$ be so that every graph has a $\eps$-nice equipartition. Then,
+%$M'(\eps) \le M(\eps^3)^2$.
+%%
+%\end{block}
+
+%\pause
+
+%\begin{proof}
+%%
+%%
+%\end{proof}
+%%
+%\end{frame}
+
+% TODO: add fox and lovasz overview of the proof technique, including how the weights are
+% determined. try to use that to motivate the definitions.
+
+\begin{frame}{Alternative, equivalent setting}
   %
-  \begin{definition}[$\eps$-nice equipartition]
+  \begin{definition}[Pair density for edge distributions]
     %
-    For all $Z \in \Z$, all but $k \eps$ sets $Z' \in \Z$ are such that $(Z, Z')$ is
-    $\eps$-regular.
+    $d_\mu(A, B) = |A|^{-1} |B|^{-1} \sum_{(u, v) \in A \times B} \Prob_\mu(uv \in G)$.
     %
   \end{definition}
 
   \pause
 
-  \begin{block}{Claim}
+  \begin{lemma}
     %
-    Let $M'(\eps)$ be so that every graph has a $\eps$-nice equipartition. Then,
-    $M'(\eps) \le M(\eps^3)$.
+    If $G$ is sampled from $\mu$, then for all $m \gtrsim \theta^{-2} \log n$, $|d_\mu(A,
+      B) - d(A, B)| \le \theta$ with probability at least 1/2 if $|A| = |B| = m$.
     %
-  \end{block}
+  \end{lemma}
 
   \pause
 
   \begin{proof}
     %
-    TODO
+    \pause
+    %
+    If $G$ is sampled from $\Prob$, then $d(A, B) = |A|^{-1} |B|^{-1} \sum_{uv}
+      \indicator{uv \in G}$.
+    %
+    \pause
+    %
+    Then, $\Exp{d(A, B)} = d_\mu(A, B)$.
+    %
+    \pause
+    %
+    By Chernoff's inequality, $\Prob(|d(A, B) - d_\mu(A, B)| \ge \theta) \le 2\exp(-2
+      m^2 \theta^2)$.
+    %
+    \pause
+    %
+    Taking a union bound over the choices of $A$ and $B$, the probability of $G$
+    failing the lemma is $\Prob(G \text{ bad}) \le 2 {n \choose m}^2 \exp(-2 m^2
+      \theta^2)$, which is less than 1/2 if $m \ge 20 \theta^{-2} \log n$.
     %
   \end{proof}
   %
 \end{frame}
-
-% TODO: define the weighted graph as a distribution over graphs by specifying
-% probabilities for the edges
-
-% TODO: add fox and lovasz overview of the proof technique, including how the weights are
-% determined. try to use that to motivate the definitions.
 
 \end{document}
