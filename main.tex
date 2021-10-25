@@ -209,7 +209,7 @@
     %
     \pause
     %
-    By Chernoff's inequality, $\Prob(|d(A, B) - d_\mu(A, B)| \ge \theta) \le 2\exp(-2
+    By Chernoff's bound, $\Prob(|d(A, B) - d_\mu(A, B)| \ge \theta) \le 2\exp(-2
       m^2 \theta^2)$.
     %
     \pause
@@ -221,6 +221,52 @@
     \pause
     %
     which is less than 1/2 if $m \ge C \theta^{-2} \log n$ for some constant $C$.
+    %
+  \end{proof}
+  %
+\end{frame}
+
+\begin{frame}{$c$-balanced partitions}
+  %
+  \begin{definition}[$c$-balanced bipartitions]
+    %
+    Sequence $(A_i, B_i)_{i = 1}^m$ of equal-sized-parts bipartitions of $M$ such that
+    for $s, t \in [M]$ there are at most $(1/2 + c)m$ values of $i$ for which $s$ and
+    $t$ lie in the same part of the corresponding bipartition.
+    %
+  \end{definition}
+
+  \pause
+
+  \begin{lemma}
+    %
+    For every $m \ge 1$ and $M \lesssim 2^{c^2 m}$, there exists a sequence of
+    $c$-balanced bipartitions of $[M]$.
+    %
+  \end{lemma}
+
+  \pause
+
+  \begin{proof}
+    %
+    \pause
+    %
+    For bipartition $i$, and element $t \in [M]$, put $t \in A_i$ with probability 1/2
+    and in $B_i$ otherwise.
+    %
+    \pause
+    %
+    Let $X_{s, t}$ be the random variable counting the times $s, t$ fall in the same
+    side.
+    %
+    \pause
+    %
+    $\Exp{X_{s, t}} = m/2$. Using Chernoff's bound, $\Prob(X_{s, t} > (1 + c)m/2) \le
+      \exp(-c^2 m/4)$.
+    %
+    \pause
+    %
+    Take a union bound over all ${M \choose 2}$ choices of distinct $s, t$.
     %
   \end{proof}
   %
