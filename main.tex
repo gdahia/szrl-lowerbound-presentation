@@ -64,16 +64,16 @@
 
   \pause
   %
-  \begin{definition}[Equipartition $\Z$]
+  \begin{definition}[Equipartition $\X$]
     %
-    $\Z = \{Z_1, \dots, Z_k\}$ partition such that $|Z_i - Z_j| \le 1$ for all $i, j \in
+    $\X = \{Z_1, \dots, Z_k\}$ partition such that $|Z_i - Z_j| \le 1$ for all $i, j \in
       [k]$.
     %
   \end{definition}
 
   \pause
   %
-  \begin{definition}[$\eps$-regular equipartition $\Z$]
+  \begin{definition}[$\eps$-regular partition $\X$]
     %
     All but $\eps k^2$ pairs $(Z_i, Z_j)$ are $\eps$-regular.
     %
@@ -134,7 +134,7 @@
 %%
 %\begin{definition}[$\eps$-nice equipartition]
 %%
-%For all $Z \in \Z$, all but $k \eps$ sets $Z' \in \Z$ are such that $(Z, Z')$ is
+%For all $Z \in \X$, all but $k \eps$ sets $Z' \in \X$ are such that $(Z, Z')$ is
 %$\eps$-regular.
 %%
 %\end{definition}
@@ -166,8 +166,8 @@
   %
   \pause
   %
-  Define a sequence of equipartitions $\Z_0, \dots, \Z_s$ with $\Z_{i + 1}$ refining
-  $\Z_i$ in exponentially more parts.
+  Define a sequence of equipartitions $\X_0, \dots, \X_s$ with $\X_{i + 1}$ refining
+  $\X_i$ in exponentially more parts.
   %
   \pause
   %
@@ -176,15 +176,23 @@
   \pause
   %
   Any $\eps$-regular partition of the edge distribution cannot be too far from being a
-  refinement of $\Z_s$, which has many parts.
+  refinement of $\X_s$, which has many parts.
   %
 \end{frame}
 
 \begin{frame}{Alternative, equivalent setting}
   %
+  \begin{definition}[Edge distribution $\mu$]
+    %
+    $\mu: {V \choose 2} \to [0, 1]$ such that $\Prob(uv \in G) = \mu(uv)$.
+    %
+  \end{definition}
+
+  \pause
+
   \begin{definition}[Pair density for edge distributions]
     %
-    $d_\mu(A, B) = |A|^{-1} |B|^{-1} \sum_{(u, v) \in A \times B} \Prob_\mu(uv \in G)$.
+    $d_\mu(A, B) = |A|^{-1} |B|^{-1} \sum_{(u, v) \in A \times B} \mu(uv)$.
     %
   \end{definition}
 
@@ -192,8 +200,8 @@
 
   \begin{lemma}
     %
-    If $G$ is sampled from $\mu$, then for all $m \gtrsim \theta^{-2} \log n$, $|d_\mu(A,
-      B) - d(A, B)| \le \theta$ with probability at least 1/2 if $|A| = |B| = m$.
+    If $G \sim \mu$, then for $m \gtrsim \theta^{-2} \log n$, $|d_\mu(A, B) - d(A, B)|
+      \le \theta$ with probability at least 1/2 if $|A| = |B| = m$.
     %
   \end{lemma}
 
@@ -203,38 +211,31 @@
     %
     \pause
     %
-    If $G$ is sampled from $\Prob$, then $d(A, B) = |A|^{-1} |B|^{-1} \sum_{uv}
-      \indicator{uv \in G}$.
+    $d(A, B) = |A|^{-1} |B|^{-1} \sum_{uv} \indicator{uv \in G}$.
     %
     \pause
     %
-    Then, $\Exp{d(A, B)} = d_\mu(A, B)$.
+    So, $\Exp{d(A, B)} = d_\mu(A, B)$.
     %
     \pause
     %
-    By Chernoff's bound, $\Prob(|d(A, B) - d_\mu(A, B)| \ge \theta) \le 2\exp(-2
-      m^2 \theta^2)$.
+    By Chernoff, $\Prob(|d(A, B) - d_\mu(A, B)| \ge \theta) \le 2\exp(-2 m^2 \theta^2)$.
     %
     \pause
     %
-    Taking a union bound over the choices of $A$ and $B$, the probability of $G$
-    failing the lemma is $\Prob(G \text{ bad}) \le 2 {n \choose m}^2 \exp(-2 m^2
-      \theta^2)$,
-    %
-    \pause
-    %
-    which is less than 1/2 if $m \ge C \theta^{-2} \log n$ for some constant $C$.
+    Taking a union bound over $A$ and $B$, $\Prob(G \text{ bad}) \le 2 {n \choose m}^2
+      \exp(-2 m^2 \theta^2) < 1/2$ if $m \ge C \theta^{-2} \log n$.
     %
   \end{proof}
   %
 \end{frame}
 
-\begin{frame}{$c$-balanced partitions}
+\begin{frame}{$\eta$-balanced bipartitions}
   %
-  \begin{definition}[$c$-balanced bipartitions]
+  \begin{definition}[$\eta$-balanced bipartitions]
     %
     Sequence $(A_i, B_i)_{i = 1}^m$ of equal-sized-parts bipartitions of $M$ such that
-    for $s, t \in [M]$ there are at most $(1/2 + c)m$ values of $i$ for which $s$ and
+    for $s, t \in [M]$ there are at most $(1/2 + \eta)m$ values of $i$ for which $s$ and
     $t$ lie in the same part of the corresponding bipartition.
     %
   \end{definition}
@@ -243,8 +244,8 @@
 
   \begin{lemma}
     %
-    For every $m \ge 1$ and $M \lesssim 2^{c^2 m}$, there exists a sequence of
-    $c$-balanced bipartitions of $[M]$. Call $\phi(m)$ the largest such $M$.
+    For every $m \ge 1$ and $M \lesssim 2^{\eta^2 m}$, there exists a sequence of
+    $\eta$-balanced bipartitions of $[M]$. Call $\phi(m)$ the largest such $M$.
     %
   \end{lemma}
 
@@ -267,7 +268,7 @@
     %
     \pause
     %
-    Using Chernoff's bound, $\Prob(X_{s, t} > (1 + c)m/2) \le \exp(-c^2 m/4)$.
+    Using Chernoff's bound, $\Prob(X_{s, t} > (1 + 2 \eta)m/2) \le \exp(-\eta^2 m)$.
     %
     \pause
     %
@@ -282,31 +283,42 @@
   %
   \begin{enumerate}
     %
-    \pause
-    %
-    \item Let $\X_0, \dots, \X_s$ be equipartitions with $|\X_0| = 1$ such that
+    \item[] Let $\X_0$ be the trivial equipartition.
           %
-          \begin{multicols}{2}
+          \pause
+          %
+    \item Define $\X_{r + 1}$ from $\X_r$ by
+          %
+          \vspace{-25pt}
+          %
+          \begin{multicols}{3}
             %
-            \begin{equation}
+            \begin{equation*}
               %
-              X_{r + 1} = \bigsqcup_{i = 1}^m X_i
+              \X_r = \{ X_i \}_{i = 1}^m
               %
-            \end{equation}
+            \end{equation*}
 
-            \begin{equation}
+            \begin{equation*}
               %
               X_i = \bigsqcup_{j = 1}^M X_{i, j}
               %
-            \end{equation}
+            \end{equation*}
+
+            \begin{equation*}
+              %
+              \X_{r + 1} = \{ X_{i, j} \}_{i = 1, j = 1}^{m, M}
+              %
+            \end{equation*}
             %
           \end{multicols}
           %
-          for $M = \phi(|\X_r|)$.
+          for $M = \phi(m)$.
 
           \pause
 
-    \item Get $c$-balanced bipartitions $(\A_j, \B_j)_{j = 1}^m$ of $X_{i, 1}, \dots, X_{i, M}$.
+    \item Get $1/4$-balanced bipartitions $(\A_j, \B_j)_{j = 1}^m$ of $X_{i, 1}, \dots,
+            X_{i, M}$.
 
           \pause
 
@@ -315,20 +327,24 @@
 
           \pause
 
-    \item Define a graph $G_{r + 1}$ where $uv \in G_{r + 1}$ if for $u \in X_i$ and
-          $v \in X_j$ either $u \in A_{i, j}$ and $v \in A_{j, i}$ or $u \in B_{i, j}$
-          and $v \in B_{j, i}$.
+    \item Define $G_{r + 1}$ where the only edges are those in
+          $G_{r + 1}[A_{i, j}, A_{j, i}]$ and $G_{r + 1}[B_{i, j}, B_{j, i}]$ both of
+          which are complete bipartite.
+          %
+          % also, we can define M[i, j] = A or M[i, j] = B depending on whether X_{i, j}
+          % is in A_{i, j} or B_{i, j}. In that case, there is an edge when
+          % M[i, j] = M[j, i], and we blow it up and identify with the part?
+          %
+          % What happens if we think about this construction from \X_s downwards, taking
+          % blow-ups of the above sort? It seems we could start from the szrl partition
+          % and move into \X_s? Top-down approach?
+          %
+          \pause
+          %
+    \item Set $\mu(uv) = \sum_{r = 1}^s 2^{-r} \indicator{uv \in G_r}$.
           %
   \end{enumerate}
 
-  \pause
-
-  \begin{definition}[Edge distribution $\mu$]
-    %
-    $\Prob_\mu(uv \in G) = \sum_{r = 1}^s 2^{-r} \indicator{uv \in G_r}$.
-    %
-  \end{definition}
-  %
 \end{frame}
 
 \begin{frame}{Example}
