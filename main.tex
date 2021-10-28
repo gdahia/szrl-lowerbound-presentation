@@ -485,6 +485,26 @@
     %
     Then, $\Exp{Y^2} \le 1 - 4 \beta$ and $\Exp{|Y|} \le 1 - 2 \beta$.
     %
+    \pause
+    %
+    Hence, $\exists k$ s.t. $|\sum_{t \in \A_k} \lambda_t - \sum_{t \in \B_k} \lambda_t|
+    \le 1 - 2 \beta$.
+    %
+    \pause
+    %
+    But we also have $|\sum_{t \in \A_k} \lambda_t - \sum_{t \in \B_k} \lambda_t| =
+    2|\sum_{t \in \A_k} \lambda_t - 1/2|$,
+    %
+    \pause
+    %
+    from which we conclude $\beta \le \sum_{t \in \A_k} \lambda_t \le 1 - \beta$ and the
+    claim follows.
+
+    \pause
+    %
+    Take $(\A_j, \B_j)$ while the sequence is still $1/4$-balanced. We can do this until
+    we have removed a $\frac{1/2 + \eta}{1 - 1/4}$ fraction of them.
+    %
   \end{proof}
   %
 \end{frame}
