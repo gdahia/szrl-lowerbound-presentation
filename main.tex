@@ -104,8 +104,8 @@
     %
   \end{block}
   %
-  % TODO: motivate this question: better bounds for applications of regularity, Gowers'
-  % remark that it would be more useful if it were of the form exp(eps^-beta).
+  % motivate this question: better bounds for applications of regularity, Gowers' remark
+  % that it would be more useful if it were of the form exp(eps^-beta).
 
   %
   \pause
@@ -125,21 +125,10 @@
     %
   \end{corollary}
   %
-  % TODO: note that gowers prove his lowerbound for a weaker version of the szrl, so the
-  % proof is more general. note however that the ideas are the same
+  % note that gowers prove his lowerbound for a weaker version of the szrl, so the proof
+  % is more general. note however that the ideas are the same
   %
 \end{frame}
-
-%\begin{frame}{Alternative equivalent setting}
-%%
-%\begin{definition}[$\eps$-nice equipartition]
-%%
-%For all $Z \in \X$, all but $k \eps$ sets $Z' \in \X$ are such that $(Z, Z')$ is
-%$\eps$-regular.
-%%
-%\end{definition}
-
-%\pause
 
 %\begin{block}{Claim}
 %%
@@ -154,15 +143,10 @@
 %%
 %%
 %\end{proof}
-%%
-%\end{frame}
-
-% TODO: add fox and lovasz overview of the proof technique, including how the weights are
-% determined. try to use that to motivate the definitions.
 
 \begin{frame}{Gowers lowerbound framework}
   %
-  Use edge distribution instead of explicit graph.
+  Use an ``edge distribution'' instead of explicit graph.
   %
   \pause
   %
@@ -317,7 +301,7 @@
 
           \pause
 
-    \item Get $1/4$-balanced bipartitions $(\A_j, \B_j)_{j = 1}^m$ of $X_{i, 1}, \dots,
+    \item Get $\eta$-balanced bipartitions $(\A_j, \B_j)_{j = 1}^m$ of $X_{i, 1}, \dots,
             X_{i, M}$.
 
           \pause
@@ -353,7 +337,7 @@
   %
 \end{frame}
 
-\begin{frame}{$\beta$-refining partitions}
+\begin{frame}{$\beta$-refinements}
   %
   \begin{definition}[$A \subseteq_\beta B$]
     %
@@ -363,17 +347,146 @@
     %
   \end{definition}
 
-  \begin{definition}[$\beta$-refining partition $\Z$]
+  \pause
+
+  \begin{definition}[$\Z$ $\beta$-refining $\X$]
     %
-    $\Z$ $\beta$-refines $\X$ if at least $(1 - \beta)|\Z|$ parts of $\Z$ are
-    each $\beta$-contained in some part of $\X$.
+    $\Z$ $\beta$-refines $\X$ if at least $(1 - \beta)|\Z|$ parts $Z_t$ are such that
+    there is $X_i \in \X$ with $Z_t \subseteq_\beta X_i$.
     %
-    % the betas for the containement and the etas for balancing are each in one way?
+    % notice \Z must not necessarily be a partition, it could only be a disjoint subset
     %
   \end{definition}
+
+  \pause
+
+  \begin{lemma}[Key Lemma]
+    %
+    Let $\Z$ be an $\eps$-regular equipartition of $\mu$. There is $\beta = \beta(\eps)$
+    such that if $\Z$ $\beta$-refines $\X_r$, then it $8\beta$-refines $\X_{r + 1}$.
+    %
+  \end{lemma}
   %
 \end{frame}
 
-% TODO: look for eps nice from eps regular partition in survey
+\begin{frame}{Key Lemma usefulness}
+  %
+  \begin{proof}[Proof assuming Key Lemma (and modulo some computations)]
+    %
+    \pause
+    %
+    $\Z$ $\sqrt{\eps}$-refines $\X_0$ and so we can use the Key Lemma $r$ times to
+    conclude it $8^r \sqrt{\eps}$-refines $\X_r$.
+    %
+    \pause
+    %
+    It follows that $|\Z| \ge |\X_s|$.
+    %
+    \pause
+    %
+    From the recurrence $|\X_{r + 1}| = |\X_r| \phi(|X_r|)$, we conclude $|\X_s| =
+      \twr(s)$.
+    %
+    \pause
+    %
+    To get a graph $G$ with this property, we take $G \sim \mu$.
+    %
+  \end{proof}
+
+  \pause
+
+  \begin{block}{Missing pieces}
+    %
+    \begin{enumerate}
+      %
+      \item Proof of Key Lemma 1.
+            %
+            \pause
+            %
+      \item $\beta$?
+            %
+            \pause
+            %
+      \item $s$?
+            %
+    \end{enumerate}
+    %
+  \end{block}
+  %
+\end{frame}
+
+\begin{frame}{$\lambda$ vector}
+  %
+  \begin{definition}[$\lambda$ vector]
+    %
+    If $Z_t \subseteq_\beta X_i$, define $\lambda_j = |Z_t \cap X_{i, j}| / |Z_t|$.
+    %
+  \end{definition}
+
+  \pause
+
+  \begin{block}{Observations}
+    %
+    \begin{enumerate}
+      %
+      \pause
+      %
+      \item $\lambda_j \ge 0$
+            %
+            \pause
+            %
+      \item If $\lambda_j = 1 - \gamma$ then $Z_t \subseteq_\gamma X_{i, j}$
+            %
+            \pause
+            %
+      \item $\lVert \lambda \rVert_1 \ge 1 - \beta$
+            %
+    \end{enumerate}
+    %
+  \end{block}
+  %
+\end{frame}
+
+\begin{frame}{$\eta$-balanced bipartitions and $\lambda$ vector}
+  %
+  \begin{lemma}
+    %
+    Let $(\A_j, \B_j)_{j = 1}^m$ be the sequence of $\eta$-balanced bipartions of $X_{i,
+          1}, \dots X_{i, M}$. If there is no $j$ such that $Z_t \subseteq_{8 \beta} X_{i, j}$,
+    then at least $\Omega(m)$ of the $(\A_j, \B_j)$ satisfy $\min(\sum_{t \in \A_j}
+      \lambda_t, \sum_{t \in \B_j} \lambda_t) \ge \beta$.
+    %
+  \end{lemma}
+
+  \pause
+
+  \begin{proof}
+    %
+    By definition of $\lambda$, we have $\lVert \lambda \rVert_\infty \ge 1 - 8\beta$.
+    %
+    \pause
+    %
+    Assume $(\A_j, \B_j)_{j = 1}^m$ is $1/4$-balanced and choose one of them uniformly at
+    random.
+    %
+    \pause
+    %
+    Define $Y_t = \indicator{t \in \A_j} - \indicator{t \in \B_j}$.
+    %
+    \pause
+    %
+    $\Exp{Y_t^2} = 1$ and $\Exp{Y_t Y_{t'}} \le 1/2$ if $t \ne t'$.
+    %
+    \pause
+    %
+    Let $Y = \sum_t \lambda_t Y_t$.
+    %
+    \pause
+    %
+    Then, $\Exp{Y^2} \le 1 - 4 \beta$ and $\Exp{|Y|} \le 1 - 2 \beta$.
+    %
+  \end{proof}
+  %
+\end{frame}
 
 \end{document}
