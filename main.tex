@@ -509,4 +509,29 @@
   %
 \end{frame}
 
+\begin{frame}{Proof of Key Lemma}
+  %
+  \begin{lemma}[Key Lemma]
+    %
+    Let $\Z$ be an $\eps$-regular equipartition of $\mu$. There is $\beta = \beta(\eps)$
+    such that if $\Z$ $\beta$-refines $\X_r$, then it $8\beta$-refines $\X_{r + 1}$.
+    %
+  \end{lemma}
+  %
+  \begin{proof}
+    %
+    Take $\beta > \eps$. Let $Z_t \subseteq_\beta X_i$ and suppose there is no $j$ such
+    that $Z_t \subseteq_{8 \beta} X_{i, j}$.
+    %
+    \pause
+    %
+    By the previous lemma, we have that there are $\Omega(m)$ values of $h$ for which
+    $\min( \sum_{j \in \A_h} \lambda_j, \sum_{j \in \B_h} \lambda_j) \ge \beta > \eps$.
+    %
+    \pause
+    %
+  \end{proof}
+  %
+\end{frame}
+
 \end{document}
