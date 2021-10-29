@@ -22,7 +22,7 @@
 
 \author{Gabriel Dahia}
 
-\institute{IMPA}
+%\institute{IMPA}
 
 \date{\today}
 
@@ -331,17 +331,11 @@
 
 \end{frame}
 
-\begin{frame}{}
-  %
-
-  %
-\end{frame}
-
 \begin{frame}{$\beta$-refinements}
   %
-  \begin{definition}[$A \subseteq_\beta B$]
+  \begin{definition}[$Z \subseteq_\beta X$]
     %
-    $A \subseteq_\beta B$ iff $|A \cap B| \ge (1 - \beta)|A|$.
+    $Z \subseteq_\beta X$ iff $|Z \cap X| \ge (1 - \beta)|X|$.
     %
     % it misses at most a beta proportion of the elements
     %
@@ -488,12 +482,12 @@
     \pause
     %
     Hence, $\exists k$ s.t. $|\sum_{t \in \A_k} \lambda_t - \sum_{t \in \B_k} \lambda_t|
-    \le 1 - 2 \beta$.
+      \le 1 - 2 \beta$.
     %
     \pause
     %
     But we also have $|\sum_{t \in \A_k} \lambda_t - \sum_{t \in \B_k} \lambda_t| =
-    2|\sum_{t \in \A_k} \lambda_t - 1/2|$,
+      2|\sum_{t \in \A_k} \lambda_t - 1/2|$,
     %
     \pause
     %
@@ -511,6 +505,8 @@
 
 \begin{frame}{Proof of Key Lemma}
   %
+  \vspace{-10pt}
+  %
   \begin{lemma}[Key Lemma]
     %
     Let $\Z$ be an $\eps$-regular equipartition of $\mu$. There is $\beta = \beta(\eps)$
@@ -518,20 +514,166 @@
     %
   \end{lemma}
   %
-  \begin{proof}
+  \vspace{-8pt}
+  %
+  \begin{block}{Proof.}
     %
-    Take $\beta > \eps$. Let $Z_t \subseteq_\beta X_i$ and suppose there is no $j$ such
+    \pause
+    %
+    Take $\beta^2 > \eps$. Let $Z_t \subseteq_\beta X_i$ and suppose there is no $j$ such
     that $Z_t \subseteq_{8 \beta} X_{i, j}$.
     %
     \pause
     %
-    By the previous lemma, we have that there are $\Omega(m)$ values of $h$ for which
+    By the previous lemma, we have that there are $5 \beta m/2$ values of $h$ for which
     $\min( \sum_{j \in \A_h} \lambda_j, \sum_{j \in \B_h} \lambda_j) \ge \beta > \eps$.
     %
     \pause
     %
+    \alert{From $\Z$ $\beta$-refining $\X_r$ and averaging, there are $(1 - \beta) 5\beta
+        k/4 > \beta k$ pairs of $(u, h)$ such that $Z_u \subseteq_\beta X_h$ as above.}
+
+    \pause
+    %
+    Fix one such $(u, h)$ and define
+    %
+    \vspace{-10pt}
+    %
+    \begin{multicols}{4}
+      %
+      $T_A = Z_t \cap A_{i, h}$
+
+      \break
+
+      $T_B = Z_t \cap B_{i, h}$
+
+      \break
+
+      $U_A = Z_u \cap A_{h, i}$
+
+      \break
+
+      $U_B = Z_u \cap B_{h, i}$.
+
+      %
+    \end{multicols}
+    %
+    \vspace{-10pt}
+    %
+    \pause
+    %
+    We know $d_{G_r}(T_A, U_A) = 1$, $d_{G_r}(T_B, U_A) = 0$,
+    %
+    \pause
+    %
+    $\min(|T_A|, |T_B|) > \eps |Z_t|$,
+    %
+    \pause
+    %
+    and $|U_A| \ge (1 - \beta)|Z_u|/2$ if $|U_A| \ge |U_B|$.
+    %
+    \pause
+    %
+    By definition of $\mu$, this implies $|d_\mu(T_A, U_A) - d_\mu(T_B, U_A)| \ge
+      2^{-s}$.
+    %
+  \end{block}
+  %
+\end{frame}
+
+\begin{frame}{Proof of Key Lemma}
+  %
+  \begin{proof}
+    %
+    Pick $s \le \log 1/\eps$ and $(Z_t, Z_u)$ is not $\eps$-regular.
+    %
+    \pause
+    %
+    This argument shows that assuming $Z_t \subseteq_\beta X_i$ but for no $j$  $Z_t
+      \subseteq_{8 \beta} X_{i, j}$, then $\beta k$ pairs with $Z_t$ are irregular.
+
+    \pause
+    %
+    As $\beta^2 > \eps$ and $\Z$ $\beta$-refines $\X_r$, we can discard $\beta k$ values
+    of $t$ and for the remaining $(1 - 2\beta)k$ values with have $Z_t \subseteq_{8
+        \beta} X_{i, j}$ for some $i, j$.
+    %
   \end{proof}
   %
 \end{frame}
+
+\begin{frame}{Stronger proof}
+  %
+  \begin{block}{Gowers' stronger proof}
+    %
+    \begin{enumerate}
+      %
+      \pause
+      %
+      \item $\eta$-balanced $r$-partitions
+
+            \pause
+            %
+      \item $\lambda$ vectors for multiple parts
+
+            \pause
+            %
+      \item no edge distribution
+
+            \pause
+            %
+      \item $G$ defined as a mod-2 sum (ie, an exclusive or)
+            %
+    \end{enumerate}
+    %
+  \end{block}
+
+  \pause
+  %
+  \begin{block}{Moshkovitz and Shapira's simpler version}
+    %
+    \begin{enumerate}
+      %
+      \item $\eps$-nice instead of $\eps$-regular.
+
+            \pause
+            %
+      \item Key lemma with $(\beta + 8\eps)$-refinement instead of $8 \beta$-refinement.
+
+            \pause
+            %
+      \item Uniform weight $\delta$ instead of exponentially decaying $2^{-r}$
+
+            \pause
+            %
+      \item Direct counting of vertices, instead of parts
+            %
+    \end{enumerate}
+    %
+  \end{block}
+  %
+\end{frame}
+
+\begin{frame}{Bonus}
+  %
+  \begin{theorem}[Fox, LM Lovasz (2017)]
+    %
+    For $\eps < 1/4$, there are constants $C > c > 0$ such that the bound $K(\eps)$ on
+    the number of parts in the regularity lemma is at least a tower of twos of height at
+    least $c \eps^{-2}$ and at most $C \eps^{-2}$.
+    %
+  \end{theorem}
+
+  \begin{block}{Question}
+    %
+    Can these graphs be handled differently in applications of regularity?
+    %
+    % similar to Luczak's construction. Can we have a containers for these guys and a KLR
+    % conjecture analogue to get good bounds for szrl?
+    %
+  \end{block}
+  %
+\end{frame}
+
 
 \end{document}
