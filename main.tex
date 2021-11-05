@@ -495,9 +495,55 @@
   %
 \end{frame}
 
-\begin{frame}{Proof of Key Lemma}
+\begin{frame}{Overview of proof of Key Lemma}
   %
-  \vspace{-10pt}
+  \begin{enumerate}
+    %
+    \item All we know is that $\Z$ is $\eps$-regular equipartition
+          %
+          \pause
+          %
+    \item We want to show there are not many $Z_t$ such that $Z_t \not \subseteq_{8
+              \beta} X_{i, j}$
+          %
+          \pause
+          %
+    \item The $\eta$-balanced partitions and $\lambda$ vector lemma gives us many
+          bipartitions from the lemma
+          %
+          \pause
+          %
+    \item Use these bipartitions to get many $Z_u \subseteq_\beta X_{i, h}$
+          %
+          \pause
+          %
+    \item Divide $Z_t$ into $h$-red and $h$-blue subsets of $X_i$, and $Z_u$ into $i$-red
+          and $i$-blue subsets of $X_h$
+          %
+          \pause
+          %
+          \begin{enumerate}[i]
+            %
+            \item The bipartition properties shows these subsets are in the ``regularity
+                  lemma setting''
+                  %
+                  \pause
+                  %
+            \item The construction of $\mu$ shows they are a witness to the irregularity
+                  of the pair $(Z_t, Z_u)$
+                  %
+          \end{enumerate}
+          %
+          \pause
+          %
+    \item Therefore, there cannot be many $Z_t$, and we can discard the bad ones to get
+          the key lemma.
+          %
+  \end{enumerate}
+  %
+\end{frame}
+
+\begin{frame}{Proof of Key Lemma}
   %
   \begin{lemma}[Key Lemma]
     %
