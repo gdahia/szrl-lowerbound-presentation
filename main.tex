@@ -430,16 +430,22 @@
 
 \begin{frame}{$\eta$-balanced bipartitions and $\lambda$ vector}
   %
+  \vspace{-5pt}
+
   \begin{lemma}
     %
-    Let $(\A_j, \B_j)_{j = 1}^m$ be the sequence of $\eta$-balanced bipartions of $X_{i,
-          1}, \dots X_{i, M}$. If there is no $j$ such that $Z_t \subseteq_{8 \beta} X_{i, j}$,
-    then at least $\Omega(m)$ of the $(\A_j, \B_j)$ satisfy $\min(\sum_{t \in \A_j}
-      \lambda_t, \sum_{t \in \B_j} \lambda_t) \ge \beta$.
+    Let $(\A_j, \B_j)_{j = 1}^m$ be the sequence of $\eta$-balanced bipartions of $[M]$.
+    Define $h \in H$ iff $(\A_h, \B_h)$ satisfy $\min(\sum_{v \in \A_h} \lambda_v,
+      \sum_{v \in \B_h} \lambda_v) \ge \beta$.  If for all $j \in [M]$ $Z_t \not
+      \subseteq_{8 \beta} X_{i, j}$, then $|H| = \Omega(m)$.
     %
   \end{lemma}
 
+  % TODO: fix constants and (1 - beta) dividing
+
   \pause
+
+  \vspace{-5pt}
 
   \begin{proof}
     %
@@ -447,44 +453,43 @@
     %
     \pause
     %
-    Assume $(\A_j, \B_j)_{j = 1}^m$ is $\gamma$-balanced and choose one of them uniformly at
-    random.
+    Assume $(\A_j, \B_j)_{j = 1}^m$ is $\gamma$-balanced and choose one of them uniformly
+    at random.
     %
     \pause
     %
-    Define $Y_t = \indicator{t \in \A_j} - \indicator{t \in \B_j}$.
+    Given $v$, define $Y_v = \indicator{v \in \A_j} - \indicator{v \in \B_j}$.
     %
     \pause
     %
-    $\Exp{Y_t^2} = 1$ and $\Exp{Y_t Y_{t'}} \le 1/2$ if $t \ne t'$.
+    $\Exp{Y_v^2} = 1$ and $\Exp{Y_v Y_{v'}} \le 1/2$ if $v \ne v'$.
     %
     \pause
     %
-    Let $Y = \sum_t \lambda_t Y_t$.
+    Let $Y = \sum_v \lambda_v Y_v$.
     %
     \pause
     %
-    Then, $\Exp{Y^2} \le 1 - 4 \beta$ and $\Exp{|Y|} \le 1 - 2 \beta$.
+    Hence, $\Exp{Y^2} \le 1 - 4 \beta$ and $\Exp{|Y|} \le 1 - 2 \beta$.
     %
     \pause
     %
-    Hence, $\exists k$ s.t. $|\sum_{t \in \A_k} \lambda_t - \sum_{t \in \B_k} \lambda_t|
-      \le 1 - 2 \beta$.
+    We conclude there is $h$ such that $|\sum_{v \in \A_h} \lambda_v - \sum_{v \in \B_h}
+      \lambda_v| \le 1 - 2 \beta$.
     %
     \pause
     %
-    But we also have $|\sum_{t \in \A_k} \lambda_t - \sum_{t \in \B_k} \lambda_t| =
-      2|\sum_{t \in \A_k} \lambda_t - 1/2|$,
+    But we also have $|\sum_{v \in \A_h} \lambda_v - \sum_{v \in \B_h} \lambda_v| =
+      2|\sum_{v \in \A_h} \lambda_v - 1/2|$,
     %
     \pause
     %
-    from which we conclude $\beta \le \sum_{t \in \A_k} \lambda_t \le 1 - \beta$ and the
-    claim follows.
-
+    from which we conclude $\beta \le \sum_{v \in \A_h} \lambda_v \le 1 - \beta$.
+    %
     \pause
     %
-    Take $(\A_j, \B_j)$ while the sequence is still $\gamma$-balanced. We can do this
-    until we have removed a $\frac{1/2 + \eta}{1 - \gamma}$ fraction of them.
+    Take $(\A_h, \B_h)$ while the sequence is still $\gamma$-balanced. We can do this
+    until we have removed a $(1/2 + \eta)/(1 - \gamma)$ fraction of them.
     %
   \end{proof}
   %
