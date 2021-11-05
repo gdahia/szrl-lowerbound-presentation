@@ -553,8 +553,6 @@
     %
   \end{lemma}
   %
-  \vspace{-8pt}
-  %
   \begin{block}{Proof.}
     %
     \pause
@@ -564,17 +562,23 @@
     %
     \pause
     %
-    By the previous lemma, we have that there are $5 \beta m/2$ values of $h$ for which
-    $\min( \sum_{j \in \A_h} \lambda_j, \sum_{j \in \B_h} \lambda_j) \ge \beta > \eps$.
+    By the previous lemma, we have that $|H| \ge 5 \beta m/2$.
     %
     \pause
     %
-    \alert{From $\Z$ $\beta$-refining $\X_r$ and averaging, there are $(1 - \beta) 5\beta
-        k/4 > \beta k$ pairs of $(u, h)$ such that $Z_u \subseteq_\beta X_h$ as above.}
+    From $\Z$ $\beta$-refining $\X_r$ and averaging, there are \[(1 -
+      \beta)k~\frac{5\beta}{4} > \beta k\] $Z_u$ such that $Z_u \subseteq_\beta X_h$ for
+    $h \in H$.
+    %
+  \end{block}
+  %
+\end{frame}
 
-    \pause
+\begin{frame}{Proof of Key Lemma}
+  %
+  \begin{proof}
     %
-    Fix one such $(u, h)$ and define
+    Fix one such $(Z_u, X_h)$ and define
     %
     \vspace{-10pt}
     %
@@ -616,14 +620,6 @@
     By definition of $\mu$, this implies $|d_\mu(T_A, U_A) - d_\mu(T_B, U_A)| \ge
       2^{-s}$.
     %
-  \end{block}
-  %
-\end{frame}
-
-\begin{frame}{Proof of Key Lemma}
-  %
-  \begin{proof}
-    %
     Pick $s \le \log 1/\eps$ and $(Z_t, Z_u)$ is not $\eps$-regular.
     %
     \pause
@@ -649,10 +645,10 @@
       %
       \pause
       %
-    \item $(\eps, \delta)$-regularity
+      \item $(\eps, \delta)$-regularity
 
-      \pause
-      %
+            \pause
+            %
       \item $\eta$-balanced $r$-partitions
 
             \pause
